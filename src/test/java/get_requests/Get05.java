@@ -5,6 +5,8 @@ import io.restassured.response.Response;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Get05 extends HerOkuAppBaseUrl {
 
@@ -35,6 +37,10 @@ public class Get05 extends HerOkuAppBaseUrl {
 
         Response response = given().spec(spec).when().get("/{first}");
         response.prettyPrint();
+        //4. Step: Do Assertion
+        assertEquals(200,response.getStatusCode());
+        assertTrue(response.asString().contains("bookingid"));
+
 
     }
 
